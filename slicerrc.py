@@ -1,4 +1,4 @@
-# helper functions for developing - see bottom for key bindings
+"""Helper functions for developing - see bottom for key bindings"""
 
 def tracker():
   print("tracker setup...")
@@ -94,14 +94,13 @@ def fileScan():
 
   globals()['e'] = e = globals()[mod].FileScanWidget()
 
-# set up hot keys for various development scenarios
-
 globals()['tracker'] = tracker
 globals()['endoscopy'] = endoscopy
 globals()['editor'] = editor
 globals()['fileScan'] = fileScan
 
 def setupMacros():
+  """Set up hot keys for various development scenarios"""
   import qt
   macros = (
       ("Ctrl+0", loadSlicerRCFile),
