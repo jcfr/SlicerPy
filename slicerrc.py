@@ -94,14 +94,10 @@ def fileScan():
 
   globals()['e'] = e = globals()[mod].FileScanWidget()
 
-globals()['tracker'] = tracker
-globals()['endoscopy'] = endoscopy
-globals()['editor'] = editor
-globals()['fileScan'] = fileScan
-
 def setupMacros():
   """Set up hot keys for various development scenarios"""
   import qt
+  global tracker, endoscopy, editor, fileScan
   macros = (
       ("Ctrl+0", loadSlicerRCFile),
       ("Ctrl+1", tracker),
