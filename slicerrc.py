@@ -1,5 +1,3 @@
-import qt
-
 # helper functions for developing - see bottom for key bindings
 
 def tracker():
@@ -117,6 +115,7 @@ globals()['editor'] = editor
 globals()['fileScan'] = fileScan
 
 def setupMacros():
+  import qt
   macros = (
       ("Ctrl+0", loadRCFile),
       ("Ctrl+1", tracker),
