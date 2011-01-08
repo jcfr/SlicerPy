@@ -94,21 +94,8 @@ def fileScan():
 
   globals()['e'] = e = globals()[mod].FileScanWidget()
 
-
-
-def loadRCFile():
-  """ reload this file - can't use the version in _internalInstance, since
-  it does not exist yet when the key macros are defined"""
-  import os.path
-  rcfile = os.path.expanduser('~/.slicerrc.py')
-  if os.path.isfile(rcfile):
-    execfile(rcfile)
-
-
-
 # set up hot keys for various development scenarios
 
-globals()['loadRCFile'] = loadRCFile
 globals()['tracker'] = tracker
 globals()['endoscopy'] = endoscopy
 globals()['editor'] = editor
@@ -117,7 +104,7 @@ globals()['fileScan'] = fileScan
 def setupMacros():
   import qt
   macros = (
-      ("Ctrl+0", loadRCFile),
+      ("Ctrl+0", loadSlicerRCFile),
       ("Ctrl+1", tracker),
       ("Ctrl+2", endoscopy),
       ("Ctrl+3", editor),
