@@ -131,4 +131,8 @@ def setupMacros():
 globals()['setupMacros'] = setupMacros
 setupMacros()
 
+# Display current time
+from time import gmtime, strftime
+print "Slicer RC file loaded [%s]" % strftime("%d/%m/%Y %H:%M:%S", gmtime())
+
 
