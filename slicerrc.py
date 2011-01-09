@@ -35,8 +35,8 @@ def editor():
   print "SlicerRC - editor setup..."
   import imp, sys, os
   import slicer
-  tcl("set ::guipath $::env(Slicer3_HOME)/../../Slicer4/Base/GUI/Tcl")
-  tcl("if { [lsearch $::auto_path $::guipath] == -1 } { set ::auto_path [list $::env(Slicer3_HOME)/../../Slicer4/Base/GUI/Tcl $::auto_path] } ")
+  tcl("set ::guipath $::env(Slicer_HOME)/../../Slicer4/Base/GUI/Tcl")
+  tcl("if { [lsearch $::auto_path $::guipath] == -1 } { set ::auto_path [list $::env(Slicer_HOME)/../../Slicer4/Base/GUI/Tcl $::auto_path] } ")
   tcl("package forget SlicerBaseGUITcl")
   tcl("package require SlicerBaseGUITcl")
   tcl("EffectSWidget::RemoveAll")
