@@ -1,7 +1,7 @@
 """Helper functions for developing - see bottom for key bindings"""
 
 def tracker():
-  print("tracker setup...")
+  print "SlicerRC - tracker setup..."
   import imp, sys
   p = '/home/pieper/hacks/itrack'
   if not sys.path.__contains__(p):
@@ -17,7 +17,7 @@ def tracker():
   i.capture()
 
 def endoscopy():
-  print("endoscopy setup...")
+  print "SlicerRC - endoscopy setup..."
   import imp, sys, os
   endoPath = '%s/../../Slicer4/QTScriptedModules/Scripts' % os.environ['Slicer_HOME']
   if not sys.path.__contains__(endoPath):
@@ -32,7 +32,7 @@ def endoscopy():
   globals()['e'] = e = globals()[mod].EndoscopyWidget()
 
 def editor():
-  print("editor setup...")
+  print "SlicerRC - editor setup..."
   import imp, sys, os
   import slicer
   tcl("set ::guipath $::env(Slicer3_HOME)/../../Slicer4/Base/GUI/Tcl")
@@ -75,7 +75,7 @@ def editor():
   globals()['e'] = e = globals()[mod].EditorWidget()
 
 def fileScan():
-  print("fileScan setup...")
+  print "SlicerRC - fileScan setup..."
   import imp, sys, os
   p = '%s/../../Slicer4/QTScriptedModules/Scripts' % os.environ['Slicer_HOME']
   if not sys.path.__contains__(p):
