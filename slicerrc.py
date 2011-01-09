@@ -98,6 +98,8 @@ def setupMacros():
   import qt
   global tracker, endoscopy, editor, fileScan
   
+  print "SlicerRC - Install custom keyboard shortcuts"
+  
   macros = (
     ("Ctrl+0", loadSlicerRCFile),
     ("Ctrl+1", tracker),
@@ -111,6 +113,7 @@ def setupMacros():
     s = qt.QShortcut(k,mainWindow())
     s.connect('activated()', f)
     s.connect('activatedAmbiguously()', f)
+    print "SlicerRC - '%s' -> '%s'" % (keys, f.__name__)
 
 # Install macros when appropriate
 import slicer
