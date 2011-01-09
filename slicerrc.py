@@ -114,7 +114,7 @@ def setupMacros():
     print "SlicerRC - '%s' -> '%s'" % (keys, f.__name__)
 
 # Install macros
-setupMacros()
+if mainWindow(verbose=False): setupMacros()
 
 # Display current time
 from time import gmtime, strftime
