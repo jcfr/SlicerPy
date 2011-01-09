@@ -34,7 +34,6 @@ def endoscopy():
 
   globals()['e'] = e = globals()[mod].EndoscopyWidget()
 
-
 def editor():
   print("editor setup...")
   import imp, sys
@@ -77,7 +76,6 @@ def editor():
 
   globals()['e'] = e = globals()[mod].EditorWidget()
 
-
 def fileScan():
   print("fileScan setup...")
   import imp, sys
@@ -96,35 +94,28 @@ def fileScan():
 
 def setupMacros():
   """Set up hot keys for various development scenarios"""
+  
   import qt
   global tracker, endoscopy, editor, fileScan
+  
   macros = (
-      ("Ctrl+0", loadSlicerRCFile),
-      ("Ctrl+1", tracker),
-      ("Ctrl+2", endoscopy),
-      ("Ctrl+3", editor),
-      ("Ctrl+4", fileScan),
-      )
+    ("Ctrl+0", loadSlicerRCFile),
+    ("Ctrl+1", tracker),
+    ("Ctrl+2", endoscopy),
+    ("Ctrl+3", editor),
+    ("Ctrl+4", fileScan),
+    )
+      
+  for keys,f in macros:
+    k = qt.QKeySequence(keys)
+    s = qt.QShortcut(k,mainWindow())
+    s.connect('activated()', f)
+    s.connect('activatedAmbiguously()', f)
 
-  if mainWindow():
-    print('got main window')
-    for keys,f in macros:
-      k = qt.QKeySequence(keys)
-      s = qt.QShortcut(k,mainWindow())
-      s.connect('activated()', f)
-      s.connect('activatedAmbiguously()', f)
-  else:
-    # main window does not exist yet, try again later
-    # TODO: shouldn't there be a signal when the main window is ready to access?
-    timer = qt.QTimer()
-    timer.setSingleShot(True)
-    timer.connect("timeout()", setupMacros)
-    timer.start()
-    globals()['_macroTimer'] = timer
-    print('timer active')
-
-globals()['setupMacros'] = setupMacros
-setupMacros()
+# Install macros when appropriate
+import slicer
+slicer.app.connect('mainWindowInstantiated()', setupMacros)
+if mainWindow(): setupMacros()
 
 # Display current time
 from time import gmtime, strftime
