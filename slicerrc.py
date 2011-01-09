@@ -113,13 +113,9 @@ def setupMacros():
     s.connect('activatedAmbiguously()', f)
     print "SlicerRC - '%s' -> '%s'" % (keys, f.__name__)
 
-# Install macros when appropriate
-import slicer
-slicer.app.connect('mainWindowInstantiated()', setupMacros)
-if mainWindow(): setupMacros()
+# Install macros
+setupMacros()
 
 # Display current time
 from time import gmtime, strftime
 print "Slicer RC file loaded [%s]" % strftime("%d/%m/%Y %H:%M:%S", gmtime())
-
-
