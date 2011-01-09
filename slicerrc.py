@@ -7,7 +7,6 @@ def tracker():
   if not sys.path.__contains__(p):
     sys.path.insert(0,p)
 
-
   mod = "itrack"
   sourceFile = p + "/itrack.py"
   fp = open(sourceFile, "r")
@@ -17,14 +16,12 @@ def tracker():
   globals()['i'] = i = globals()[mod].itrack()
   i.capture()
 
-
 def endoscopy():
   print("endoscopy setup...")
-  import imp, sys
+  import imp, sys, os
   endoPath = '%s/../../Slicer4/QTScriptedModules/Scripts' % os.environ['Slicer_HOME']
   if not sys.path.__contains__(endoPath):
     sys.path.insert(0,endoPath)
-
 
   mod = "Endoscopy"
   sourceFile = endoPath + "/Endoscopy.py"
@@ -36,7 +33,8 @@ def endoscopy():
 
 def editor():
   print("editor setup...")
-  import imp, sys
+  import imp, sys, os
+  import slicer
   tcl("set ::guipath $::env(Slicer3_HOME)/../../Slicer4/Base/GUI/Tcl")
   tcl("if { [lsearch $::auto_path $::guipath] == -1 } { set ::auto_path [list $::env(Slicer3_HOME)/../../Slicer4/Base/GUI/Tcl $::auto_path] } ")
   tcl("package forget SlicerBaseGUITcl")
@@ -78,7 +76,7 @@ def editor():
 
 def fileScan():
   print("fileScan setup...")
-  import imp, sys
+  import imp, sys, os
   p = '%s/../../Slicer4/QTScriptedModules/Scripts' % os.environ['Slicer_HOME']
   if not sys.path.__contains__(p):
     sys.path.insert(0,p)
