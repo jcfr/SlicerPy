@@ -90,11 +90,18 @@ def fileScan():
 
   globals()['e'] = e = globals()[mod].FileScanWidget()
 
+def performance():
+  print "SlicerRC - performance setup..."
+  import os
+  execfile(os.environ['Slicer_HOME'] + "/../../Slicer4/Base/Testing/Performance.py")
+  timeProbe()
+
+
 def setupMacros():
   """Set up hot keys for various development scenarios"""
   
   import qt
-  global tracker, endoscopy, editor, fileScan
+  global tracker, endoscopy, editor, fileScan, performance
   
   print "SlicerRC - Install custom keyboard shortcuts"
   
@@ -104,6 +111,7 @@ def setupMacros():
     ("Ctrl+2", endoscopy),
     ("Ctrl+3", editor),
     ("Ctrl+4", fileScan),
+    ("Ctrl+5", performance),
     )
       
   for keys,f in macros:
