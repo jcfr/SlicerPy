@@ -94,6 +94,12 @@ def performance():
   print "SlicerRC - performance setup..."
   import os
   execfile(os.environ['Slicer_HOME'] + "/../../Slicer4/Base/Testing/Performance.py")
+
+  if not getNodes().has_key('moving'):
+    fileName = os.environ['Slicer_HOME'] + "/share/MRML/Testing/TestData/moving.nrrd"
+    vl = slicer.modules.volumes.logic()
+    volumeNode = vl.AddArchetypeScalarVolume (fileName, "moving", 0)
+
   timeProbe()
 
 
@@ -124,6 +130,10 @@ def setupMacros():
 # Install macros
 if mainWindow(verbose=False): setupMacros()
 
+
 # Display current time
 from time import gmtime, strftime
 print "Slicer RC file loaded [%s]" % strftime("%d/%m/%Y %H:%M:%S", gmtime())
+
+# TODO: always show shell when using macros (doesn't work yet)
+pythonShell()
